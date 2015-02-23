@@ -1,0 +1,80 @@
+<GridLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:columnCount="3"
+    android:rowCount="7" >
+
+    <TextView
+        android:id="@+id/Hint"
+        android:layout_column="0"
+        android:layout_columnSpan="3"
+        android:layout_row="0"
+        android:text="@string/user_type"
+        android:textSize="16sp" />
+
+    <EditText
+        android:id="@+id/firstSubstance"
+        android:layout_width="wrap_content"
+        android:layout_column="0"
+        android:layout_gravity="fill"
+        android:layout_row="1" >
+
+        <requestFocus />
+    </EditText>
+
+    <TextView
+        android:id="@+id/plus"
+        android:layout_width="wrap_content"
+        android:layout_column="1"
+        android:layout_gravity="fill"
+        android:layout_row="1"
+        android:text="@string/plus" />
+
+    <EditText
+        android:id="@+id/secondSubstance"
+        android:layout_width="wrap_content"
+        android:layout_column="2"
+        android:layout_gravity="fill"
+        android:layout_row="1" />
+
+    <TextView
+        android:id="@+id/equals"
+        android:layout_width="wrap_content"
+        android:layout_column="0"
+        android:layout_gravity="fill"
+        android:layout_row="3"
+        android:ems="3"
+        android:gravity="center_horizontal"
+        android:text="@string/equals" />
+
+    <TextView
+        android:id="@+id/result"
+        android:layout_column="1"
+        android:layout_columnSpan="2"
+        android:layout_gravity="fill"
+        android:layout_row="3"
+        android:text="" />
+
+    <Button
+        android:id="@+id/enter"
+        android:layout_column="0"
+        android:layout_gravity="fill"
+        android:layout_row="4"
+        android:text="@string/enter" />
+
+    <Button
+        android:id="@+id/clear"
+        android:layout_column="2"
+        android:layout_gravity="fill"
+        android:layout_row="4"
+        android:text="@string/clear"/>
+
+    <Button
+        android:id="@+id/about"
+        android:layout_column="0"
+        android:layout_columnSpan="3"
+        android:layout_gravity="fill"
+        android:layout_row="5"
+        android:text="@string/about" />
+
+</GridLayout>
