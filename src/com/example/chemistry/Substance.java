@@ -8,22 +8,27 @@ public class Substance {
 	private String radical;
 	private int elemQuantity;
 	private int radQuantity;
+	
+	private static Substance react(Substance a, Substance b) {
+		String type = a.subType + " " + b.subType;
+		switch(type){
+		case "oxide water":
+			return 
+		}
+	}
 
 	public void setType(String s) {
 		this.subType = s;
 	}
 
-	private void setElemQ(int q) {
+	/*private void setElemQ(int q) {
 		this.elemQuantity = q;
-	}
+	}*/
 
 	private void setRadQ(int q) {
 		this.radQuantity = q;
 	}
 
-	private Substance react(Substance s) {
-			
-	}
 
 	// Извлечение радикала в скобках
 	public String extractRadical(String input) {
