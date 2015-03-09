@@ -31,8 +31,8 @@ public class MainActivity extends Activity implements OnClickListener {
 
 	@Override
 	public void onClick(View v) {
-		EditText firstSub = (EditText) findViewById(R.id.firstSubstance);
-		EditText secondSub = (EditText) findViewById(R.id.secondSubstance);
+		EditText firstSub = (EditText) findViewById(R.id.first_substance);
+		EditText secondSub = (EditText) findViewById(R.id.second_substance);
 		TextView result = (TextView) findViewById(R.id.result);
 		switch (v.getId()) {
 		case R.id.enter:
@@ -48,8 +48,8 @@ public class MainActivity extends Activity implements OnClickListener {
 			secondSubType = rec.recognise((String) secondSub.getText()
 					.toString());
 			//try {
-				Substance secondSubstance = new Substance(
-						(secondSub.getText().toString()), secondSubType);
+				//Substance secondSubstance = new Substance(
+					//	(secondSub.getText().toString()), secondSubType);
 			/*} catch (Exception e) {
 				Toast.makeText(this, e.getMessage(), Toast.LENGTH_LONG).show();
 			}*/
