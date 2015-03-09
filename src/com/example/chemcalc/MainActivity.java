@@ -8,6 +8,7 @@ import android.widget.Button;
 import android.view.View.OnClickListener;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.chemistry.*;
 
@@ -38,11 +39,21 @@ public class MainActivity extends Activity implements OnClickListener {
 			Recogniser rec = new Recogniser();
 			firstSubType = rec
 					.recognise((String) firstSub.getText().toString());
-			Substance firstSubstance = new Substance((firstSub.getText().toString()), firstSubType);
+			//try {
+				Substance firstSubstance = new Substance(
+						(firstSub.getText().toString()), firstSubType);
+			/*} catch (Exception e) {
+				Toast.makeText(this, e.getMessage(), Toast.LENGTH_LONG).show();
+			}*/
 			secondSubType = rec.recognise((String) secondSub.getText()
 					.toString());
-			Substance secondSubstance = new Substance((secondSub.getText().toString()), secondSubType);
-			result.setText((CharSequence) (firstSubType + " + " + secondSubType));
+			//try {
+				Substance secondSubstance = new Substance(
+						(secondSub.getText().toString()), secondSubType);
+			/*} catch (Exception e) {
+				Toast.makeText(this, e.getMessage(), Toast.LENGTH_LONG).show();
+			}*/
+			result.setText((CharSequence) Substance.react(firstSubstance));
 			break;
 		case R.id.clear:
 			firstSubType = "";

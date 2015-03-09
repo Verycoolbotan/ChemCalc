@@ -81,13 +81,8 @@ public class Element {
 		this.numberOfVals = numOfVals;
 		this.mass = mass;
 		this.isMetal = isMetal;
-		for (int i = 0; i < numberOfVals; i++) {
-			this.vals[i] = sentVals[i];
-		}
+		//for (int i = 0; i < sentVals.length; i++) {
+		//	this.vals[i] = sentVals[i];
+		//}
 	}
-	
-	
-	
-	
-
 }

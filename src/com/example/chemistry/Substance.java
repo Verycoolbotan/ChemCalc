@@ -8,27 +8,44 @@ public class Substance {
 	private String radical;
 	private int elemQuantity;
 	private int radQuantity;
-	
-	private static Substance react(Substance a, Substance b) {
-		String type = a.subType + " " + b.subType;
-		switch(type){
-		case "oxide water":
-			return 
+
+	public static String react(Substance s){
+		String type = s.subType;
+		String res = "";
+		switch (type){
+		case "water":
+			res = "H2 + O2";
+			break;
+		case "base":
+			if ((Element.getSym(s.elem) == "Mg")||(Element.getSym(s.elem) == "Ca")||(Element.getSym(s.elem) == "Zn")||(Element.getSym(s.elem) == "Cu")||(Element.getSym(s.elem) == "Al")||(Element.getSym(s.elem) == "Fe")||(Element.getSym(s.elem) == "Be")){
+				res = Element.getSym(s.elem) + "O" + " + " + "H2O";
+			}
+			else{
+				res = s.toString();
+			}
+			break;
+		default:
+			res = s.toString();
+			break;
 		}
+		return res;
 	}
 
 	public void setType(String s) {
 		this.subType = s;
 	}
+	
+	public String getType(){
+		return this.subType;
+	}
 
-	/*private void setElemQ(int q) {
-		this.elemQuantity = q;
-	}*/
+	/*
+	 * private void setElemQ(int q) { this.elemQuantity = q; }
+	 */
 
 	private void setRadQ(int q) {
 		this.radQuantity = q;
 	}
-
 
 	// Извлечение радикала в скобках
 	public String extractRadical(String input) {
@@ -40,8 +57,8 @@ public class Substance {
 	// Извлечь радикал в скобках и его индекс
 	public void SetRadWithQuantity(String input) {
 		this.radical = extractRadical(input);
-		if (Character.isDigit(input.charAt(input.length()-1)) == true) {
-			this.setRadQ(input.charAt(input.length()) - '0');
+		if (Character.isDigit(input.charAt(input.length() - 1)) == true) {
+			this.setRadQ(input.charAt(input.length() - 1) - '0');
 			Pattern.compile(this.radical + "\\d").matcher(input).replaceAll("");
 		} else {
 			this.setRadQ(1);
@@ -51,10 +68,11 @@ public class Substance {
 
 	public Substance(String input, String subType) {
 		this.subType = subType;
-		if (this.subType.equals("simple")) {
+		switch (subType) {
+		case "simple":
 			this.subType = subType;
-			if (Character.isDigit(input.charAt(input.length())) == true) {
-				this.elemQuantity = input.charAt(input.length()) - '0';
+			if (Character.isDigit(input.charAt(input.length() - 1)) == true) {
+				this.elemQuantity = input.charAt(input.length() - 1) - '0';
 				Pattern.compile("\\d").matcher(input).replaceAll("");
 			} else {
 				this.elemQuantity = 1;
@@ -62,22 +80,26 @@ public class Substance {
 			}
 			this.elem = Element.getElemBySym(input);
 			this.radical = null;
-		} else if (this.subType.equals("water")) {
+			break;
+		case "water":
 			this.elem = Element.getElemBySym("H");
 			this.elemQuantity = 2;
 			this.radical = Radical.O.toString();
 			this.radQuantity = 1;
-		} else {
+			break;
+		case "NaS":
+			break;
+		default:
 			this.subType = subType;
 			SetRadWithQuantity(input);
-			if (Character.isLetter(input.charAt(input.length())) == true) {
+			if (Character.isLetter(input.charAt(input.length() - 1)) == true) {
 				this.elem = Element.getElemBySym(input);
 			} else {
-				this.elemQuantity = input.charAt(input.length()) - '0';
+				this.elemQuantity = input.charAt(input.length() - 1) - '0';
 				Pattern.compile("\\d").matcher(input).replaceAll("");
 				this.elem = Element.getElemBySym(input);
+				break;
 			}
 		}
-
 	}
 }
