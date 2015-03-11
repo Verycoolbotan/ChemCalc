@@ -9,33 +9,11 @@ public class Substance {
 	private int elemQuantity;
 	private int radQuantity;
 
-	public static String react(Substance s){
-		String type = s.subType;
-		String res = "";
-		switch (type){
-		case "water":
-			res = "H2 + O2";
-			break;
-		case "base":
-			if ((Element.getSym(s.elem) == "Mg")||(Element.getSym(s.elem) == "Ca")||(Element.getSym(s.elem) == "Zn")||(Element.getSym(s.elem) == "Cu")||(Element.getSym(s.elem) == "Al")||(Element.getSym(s.elem) == "Fe")||(Element.getSym(s.elem) == "Be")){
-				res = Element.getSym(s.elem) + "O" + " + " + "H2O";
-			}
-			else{
-				res = s.toString();
-			}
-			break;
-		default:
-			res = s.toString();
-			break;
-		}
-		return res;
-	}
-
 	public void setType(String s) {
 		this.subType = s;
 	}
-	
-	public String getType(){
+
+	public String getType() {
 		return this.subType;
 	}
 
@@ -46,7 +24,11 @@ public class Substance {
 	private void setRadQ(int q) {
 		this.radQuantity = q;
 	}
-
+	
+	public String toString(){
+		return (String)(Element.getSym(this.elem) + elemQuantity + this.radical + this.radQuantity);
+	}
+	
 	// Извлечение радикала в скобках
 	public String extractRadical(String input) {
 		int start = input.indexOf('(') + 1;
@@ -88,6 +70,7 @@ public class Substance {
 			this.radQuantity = 1;
 			break;
 		case "NaS":
+			
 			break;
 		default:
 			this.subType = subType;

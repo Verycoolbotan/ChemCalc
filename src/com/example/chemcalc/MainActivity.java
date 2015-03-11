@@ -39,21 +39,23 @@ public class MainActivity extends Activity implements OnClickListener {
 			Recogniser rec = new Recogniser();
 			firstSubType = rec
 					.recognise((String) firstSub.getText().toString());
-			//try {
-				Substance firstSubstance = new Substance(
-						(firstSub.getText().toString()), firstSubType);
-			/*} catch (Exception e) {
-				Toast.makeText(this, e.getMessage(), Toast.LENGTH_LONG).show();
-			}*/
+
+			Substance firstSubstance = new Substance(
+					(firstSub.getText().toString()), firstSubType);
+
 			secondSubType = rec.recognise((String) secondSub.getText()
 					.toString());
-			//try {
-				//Substance secondSubstance = new Substance(
-					//	(secondSub.getText().toString()), secondSubType);
-			/*} catch (Exception e) {
+
+			Substance secondSubstance = new Substance(
+					(secondSub.getText().toString()), secondSubType);
+
+			try {
+				result.setText((CharSequence) (firstSubstance.toString()
+						+ " + " + secondSubstance.toString()));
+			} catch (Exception e) {
 				Toast.makeText(this, e.getMessage(), Toast.LENGTH_LONG).show();
-			}*/
-			result.setText((CharSequence) Substance.react(firstSubstance));
+			}
+
 			break;
 		case R.id.clear:
 			firstSubType = "";
