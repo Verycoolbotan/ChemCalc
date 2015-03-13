@@ -17,16 +17,8 @@ public class Substance {
 		return this.subType;
 	}
 
-	/*
-	 * private void setElemQ(int q) { this.elemQuantity = q; }
-	 */
-
 	private void setRadQ(int q) {
 		this.radQuantity = q;
-	}
-	
-	public String toString(){
-		return (String)(Element.getSym(this.elem) + elemQuantity + this.radical + this.radQuantity);
 	}
 	
 	// Извлечение радикала в скобках
@@ -60,27 +52,30 @@ public class Substance {
 				this.elemQuantity = 1;
 				this.radQuantity = 0;
 			}
-			this.elem = Element.getElemBySym(input);
+			this.elem = Element.valueOf(input);
 			this.radical = null;
 			break;
 		case "water":
-			this.elem = Element.getElemBySym("H");
+			this.elem = Element.valueOf("H");
 			this.elemQuantity = 2;
 			this.radical = Radical.O.toString();
 			this.radQuantity = 1;
 			break;
 		case "NaS":
-			
+			this.elem = null;
+			this.elemQuantity = 0;
+			this.radical = null;
+			this.radQuantity = 0;
 			break;
 		default:
 			this.subType = subType;
 			SetRadWithQuantity(input);
 			if (Character.isLetter(input.charAt(input.length() - 1)) == true) {
-				this.elem = Element.getElemBySym(input);
+				this.elem = Element.valueOf(input);
 			} else {
 				this.elemQuantity = input.charAt(input.length() - 1) - '0';
 				Pattern.compile("\\d").matcher(input).replaceAll("");
-				this.elem = Element.getElemBySym(input);
+				this.elem = Element.valueOf(input);
 				break;
 			}
 		}
