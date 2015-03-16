@@ -13,12 +13,12 @@ public class Recogniser {
 	static boolean isSalt = false;
 	static boolean isWater = false;
 
-	Pattern simple = Pattern.compile("^[A-Z][a-z]?$");
-	Pattern water = Pattern.compile("^H2O$");
-	Pattern oxide = Pattern.compile("^[A-Z][a-z]?\\d?(\\Q(\\EO\\Q)\\E)+\\d?$");
-	Pattern acid = Pattern.compile("^H+\\d?\\Q(\\E([A-Z&&[^H]][a-z&&[^H]]?\\d?){1,4}\\Q)\\E\\d?$");
-	Pattern base = Pattern.compile("^[A-Z&&[^H]][a-z&&[^H]]?\\d?\\Q(\\E(OH)+\\Q)\\E\\d?$");
-	Pattern salt = Pattern.compile("^[A-Z&&[^H]][a-z&&[^H]]?\\d?\\Q(\\E([A-Z][a-z]?\\d?)\\Q)\\E\\d?$");
+	Pattern simple = Pattern.compile("[A-Z][a-z]?\\d?");
+	Pattern water = Pattern.compile("H2O");
+	Pattern oxide = Pattern.compile("[A-Z][a-z]?\\d?(\\(O)+\\)\\d?");
+	Pattern acid = Pattern.compile("H+\\d?\\(([A-Z&&[^H]][a-z]?\\d?){1,4}\\)\\d?");
+	Pattern base = Pattern.compile("[A-Z][a-z]?\\d?\\((OH)+\\)\\d?$");
+	Pattern salt = Pattern.compile("[A-Z][a-z]?\\d?\\(([A-Z][a-z]?\\d?)\\)\\d?");
 
 	public String recognise(String input) {
 		Matcher mSimple = simple.matcher(input);

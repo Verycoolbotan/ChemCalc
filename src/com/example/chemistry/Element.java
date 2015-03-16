@@ -47,7 +47,9 @@ public enum Element {
 	}
 	
 	public void setValency(int val){
-		this.val = val;
+		if(this.val == 0){
+			this.val = val;
+		}
 	}
 	
 	public boolean isMetal(){
