@@ -29,7 +29,7 @@ public class Substance {
 			} else {
 				this.elemQ = 1;
 			}
-			input = replaceMe(input, " ", "\\d?"); //Когда лень возиться со StringBuffer/StringBuilder.
+			input = replaceMe(input, "", "\\d?"); //Когда лень возиться со StringBuffer/StringBuilder.
 			input.trim();
 			this.elem = Element.valueOf(input);
 			break;
@@ -55,7 +55,7 @@ public class Substance {
 			} else {
 				this.radQ = 1;
 			}
-			input = replaceMe(input, " ", "\\([A-Z][a-z]?\\d?\\)\\d?");//Убираем радикал и смотрим на элемент
+			input = replaceMe(input, "", "\\(([A-Z][a-z]?\\d?){1,3}\\)\\d?");//Убираем радикал и смотрим на элемент
 			input.trim();
 			Log.d(SUBSTANCE_TAG, "Replaced: " + input);
 			if (Character.isDigit(input.charAt(input.length() - 1)) == true) {
@@ -63,7 +63,7 @@ public class Substance {
 			} else {
 				this.elemQ = 1;
 			}
-			input = replaceMe(input, " ", "\\d?");
+			input = replaceMe(input, "", "\\d?");
 			input.trim();
 			this.elem = Element.valueOf(input);
 			this.elem.setValency(calcValency(this.radical.getValency(), this.radQ)); //Ставим валентность элементу
@@ -103,6 +103,8 @@ public class Substance {
 			b.radical = a.radical;
 			a.radical = rTMP;
 			result = a.toString() + " + " + b.toString();
+		} else if(a.type.equals("base") && b.type.equals("acid")){
+			result = a.elem.toString() + b.radical.toString() + " + " + "H2O";
 		}
 		return result;
 	}

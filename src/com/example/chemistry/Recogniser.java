@@ -16,8 +16,8 @@ public class Recogniser {
 	Pattern simple = Pattern.compile("^[A-Z][a-z]?\\d?$");
 	Pattern water = Pattern.compile("H2O");
 	Pattern oxide = Pattern.compile("^[A-Z][a-z]?\\d?(\\(O)+\\)\\d?$");
-	Pattern acid = Pattern.compile("H+\\d?\\(([A-Z&&[^H]][a-z]?\\d?){1,4}\\)\\d?");
-	Pattern base = Pattern.compile("[A-Z][a-z]?\\d?\\((OH)+\\)\\d?$");
+	Pattern acid = Pattern.compile("H+\\d?\\(([A-Z][a-z]?\\d?){1,4}\\)\\d?");
+	Pattern base = Pattern.compile("[A-Z][a-z]?\\d?\\((OH)+\\)\\d?");
 	Pattern salt = Pattern.compile("[A-Z][a-z]?\\d?\\(([A-Z][a-z]?\\d?){1,4}\\)\\d?");
 
 	public String recognise(String input) {

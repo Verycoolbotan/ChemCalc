@@ -42,7 +42,7 @@ public class MainActivity extends Activity implements OnClickListener {
 			secondSubType = rec.recognise((String) secondSub.getText().toString());
 			Substance secondSubstance = new Substance(secondSubType, (secondSub.getText().toString()));
 			try {
-				result.setText((CharSequence) (firstSubstance.toString()+ " + " + secondSubstance.toString()));
+				result.setText((CharSequence) (Substance.react(firstSubstance, secondSubstance)));
 			} catch (Exception e) {
 				Toast.makeText(this, e.getMessage(), Toast.LENGTH_LONG).show();
 			}
