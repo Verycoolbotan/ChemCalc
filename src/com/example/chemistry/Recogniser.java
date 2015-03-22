@@ -15,10 +15,10 @@ public class Recogniser {
 
 	Pattern simple = Pattern.compile("^[A-Z][a-z]?\\d?$");
 	Pattern water = Pattern.compile("H2O");
-	Pattern oxide = Pattern.compile("^[A-Z][a-z]?\\d?(\\(O)+\\)\\d?$");
-	Pattern acid = Pattern.compile("H+\\d?\\(([A-Z][a-z]?\\d?){1,4}\\)\\d?");
-	Pattern base = Pattern.compile("[A-Z][a-z]?\\d?\\((OH)+\\)\\d?");
-	Pattern salt = Pattern.compile("[A-Z][a-z]?\\d?\\(([A-Z][a-z]?\\d?){1,4}\\)\\d?");
+	Pattern oxide = Pattern.compile("^([^H][a-z]?\\d?)\\((O)+\\)\\d?");
+	Pattern base = Pattern.compile("^([^H][a-z]?\\d?)\\((OH)+\\)\\d?");
+	Pattern acid = Pattern.compile("^(H+\\d?)\\(([A-Z][a-z]?\\d?){1,4}\\)\\d?");
+	Pattern salt = Pattern.compile("^([^H][a-z]?\\d?)\\(([A-Z][a-z]?\\d?){1,4}\\)\\d?");
 
 	public String recognise(String input) {
 		Matcher mSimple = simple.matcher(input);
@@ -35,27 +35,19 @@ public class Recogniser {
 		isSalt = mSalt.find();
 		isWater = mWater.find();
 
-		if ((isOxide == true) && (isAcid == false) && (isBase == false)
-				&& (isSalt == false) && (isSimple == false)) {
+		if ((isOxide == true) && (isAcid == false) && (isBase == false)&& (isSalt == false) && (isSimple == false)) {
 			result = "oxide";
-		} else if (((isOxide == false) && (isAcid == true) && (isBase == false)
-				&& (isSalt == false) && (isSimple == false))) {
+		} else if ((isOxide == false) && (isAcid == true) && (isBase == false) && (isSalt == false) && (isSimple == false)) {
 			result = "acid";
-		} else if ((isOxide == false) && (isAcid == false) && (isBase == true)
-				&& (isSalt == false) && (isSimple == false)) {
+		} else if ((isOxide == false) && (isAcid == false) && (isBase == true) && (isSimple == false)) { //костыль
 			result = "base";
-		} else if ((isOxide == false) && (isAcid == false) && (isBase == false)
-				&& (isSalt == true)) {
+		} else if ((isOxide == false) && (isAcid == false) && (isBase == false) && (isSalt == true)) {
 			result = "salt";
-		} else if ((isOxide == false) && (isAcid == false) && (isBase == false)
-				&& (isSalt == false) && (isSimple == true)) {
-			result = "simple_substance";
-		} else if ((isOxide == false) && (isAcid == false) && (isBase == false)
-				&& (isSalt == false) && (isSimple == false)) {
+		} else if ((isOxide == false) && (isAcid == false) && (isBase == false) && (isSalt == false) && (isSimple == true)) {
+			result = "simple";
+		} else if ((isOxide == false) && (isAcid == false) && (isBase == false) && (isSalt == false) && (isSimple == false)) {
 			result = "NaS";
-		} else if ((isOxide == false) && (isAcid == false) && (isBase == false)
-				&& (isSalt == false) && (isSimple == false)
-				&& (isWater == true)) {
+		} else if ((isOxide == false) && (isAcid == false) && (isBase == false) && (isSalt == false) && (isSimple == false) && (isWater == true)) {
 			result = "water";
 		} else {
 			result = "NaS";
