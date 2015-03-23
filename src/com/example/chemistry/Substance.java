@@ -67,6 +67,8 @@ public class Substance {
 			input.trim();
 			this.elem = Element.valueOf(input);
 			this.elem.setValency(calcValency(this.radical.getValency(), this.radQ)); //Ставим валентность элементу
+			Log.d(SUBSTANCE_TAG, "Elem valency:" + this.elem.getValency());
+			Log.d(SUBSTANCE_TAG, "Rad valency:" + this.radical.getValency());
 			break;
 			}
 	}
@@ -85,28 +87,92 @@ public class Substance {
 		return (v*c)/this.elemQ;
 	}
 	
-	public void setCoeff(int c){
+	public static int gcd(int a,int b) { //нагло скопированная реализация алгоритма Евклида (не хочу изобретать велосипед снова). 
+        while (b !=0) {					 //Это понадобится для расставления коэффициентов.
+            int tmp = a%b;
+            a = b;
+            b = tmp;
+        }
+        return a;
+    }
+	
+	public static int lcm(int a, int b) {
+		return (a*b)/gcd(a,b);
+	}
+	
+	public static void setIndexes(Substance a){
+		int aLCM = lcm(a.elem.getValency(), a.radical.getValency());
+		a.elemQ = aLCM/a.elem.getValency();
+		a.radQ = aLCM/a.radical.getValency();
+	}
+	
+	public void setCoeff(int c){ //Эта фича понадобится для выравнивания реакций. Пока что это самые бесполезные строки в проекте.
 		this.coeff = c;
 	}
 	
 	@Override
 	public String toString(){  //Заглушка. Позже добавлю доп. условия и форматирование вывода.
-		return this.elem.toString() + this.elemQ + this.radical.toString() + this.radQ;
+		String result;
+		result = this.elem.toString();
+		if(this.elemQ == 1){
+			//ничего не делаем
+		} else {
+			result += this.elemQ;
+		}
+		if(this.radQ > 1){
+			result += "(" + this.radical.toString() + ")" + this.radQ;
+		} else {
+			result += this.radical.toString();
+		}
+		return result;
 	}
 	
 	public static String react(Substance a, Substance b){
 		Element eTMP;
 		Radical rTMP;
 		String result = null;
-		if(a.type.equals("salt") && b.type.equals("salt")){
+		switch(a.type.concat(b.type)){
+		case "saltsalt":
+		case "saltacid":
+		case "acidsalt":
 			rTMP = b.radical;
 			b.radical = a.radical;
 			a.radical = rTMP;
+			setIndexes(a);
+			setIndexes(b);
 			result = a.toString() + " + " + b.toString();
-		} else if(a.type.equals("base") && b.type.equals("acid")){
-			result = a.elem.toString() + b.radical.toString() + " + " + "H2O";
+		break;
+		case "baseacid":
+		case "acidbase":
+			if(a.type.equals("base")){
+				a.radical = b.radical;
+				setIndexes(a);
+				result = a.toString() + " + H2O";
+			} else {
+				b.radical = a.radical;
+				setIndexes(b);
+				result = b.toString() + " + H2O";
+			}
+		break;
+		case "simplewater":
+		case "watersimple":
+			Substance s;
+			s = (a.elem.isMetal() == true ? a : b);
+			switch(s.elem.toString()){
+			case "Li":
+			case "K":
+			case "Na":
+			case "Ba":
+			case "Ca":
+				s.radical = Radical.OH;
+				setIndexes(s);
+				result = s.toString();
+			break;
+			}
+		break;
 		}
 		return result;
+		
 	}
 
 }

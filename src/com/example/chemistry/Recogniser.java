@@ -13,7 +13,7 @@ public class Recogniser {
 	static boolean isSalt = false;
 	static boolean isWater = false;
 
-	Pattern simple = Pattern.compile("^[A-Z][a-z]?\\d?$");
+	Pattern simple = Pattern.compile("([A-Z][a-z]?\\d?)$");
 	Pattern water = Pattern.compile("H2O");
 	Pattern oxide = Pattern.compile("^([^H][a-z]?\\d?)\\((O)+\\)\\d?");
 	Pattern base = Pattern.compile("^([^H][a-z]?\\d?)\\((OH)+\\)\\d?");
