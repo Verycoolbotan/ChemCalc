@@ -22,14 +22,17 @@ public enum Radical {
 	HPO4(2, new Element[]{Element.H, Element.P, Element.O}, new int[]{1, 1, 4}),
 	PO4(3, new Element[]{Element.P, Element.O}, new int[]{1 ,4}),
 	MnO4(1, new Element[]{Element.Mn, Element.O}, new int[]{1, 4});
-	//CH3COO(1, new Element[]{Element.C, Element.H, Element.C, Element.O, Element.O}, new int[]{1, 3, 1, 1, 1});
 	
 	private int valency;
-	private Element[] cPart;
+	private Element[] cPart; //Понадобится при совершенствовании системы реакций
 	private int Quantity[];
 	
 	public int getValency(){
 		return this.valency;
+	}
+	
+	public Element[] getParts(){
+		return this.cPart;
 	}
 	
 	private Radical(int valency, Element[] cPart, int[] Quantity){

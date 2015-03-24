@@ -130,6 +130,7 @@ public class Substance {
 	public static String react(Substance a, Substance b){
 		Element eTMP;
 		Radical rTMP;
+		Substance s;
 		String result = null;
 		switch(a.type.concat(b.type)){
 		case "saltsalt":
@@ -156,7 +157,6 @@ public class Substance {
 		break;
 		case "simplewater":
 		case "watersimple":
-			Substance s;
 			s = (a.elem.isMetal() == true ? a : b);
 			switch(s.elem.toString()){
 			case "Li":
@@ -169,6 +169,10 @@ public class Substance {
 				result = s.toString();
 			break;
 			}
+		break;
+		case "oxideoxide":
+			s = (a.elem.isMetal() == true ? a : b);
+			
 		break;
 		}
 		return result;

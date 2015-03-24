@@ -13,8 +13,8 @@ public class Recogniser {
 	static boolean isSalt = false;
 	static boolean isWater = false;
 
-	Pattern simple = Pattern.compile("([A-Z][a-z]?\\d?)$");
-	Pattern water = Pattern.compile("H2O");
+	Pattern simple = Pattern.compile("^[A-Z][a-z]?\\d?$");
+	Pattern water = Pattern.compile("^H2O$");
 	Pattern oxide = Pattern.compile("^([^H][a-z]?\\d?)\\((O)+\\)\\d?");
 	Pattern base = Pattern.compile("^([^H][a-z]?\\d?)\\((OH)+\\)\\d?");
 	Pattern acid = Pattern.compile("^(H+\\d?)\\(([A-Z][a-z]?\\d?){1,4}\\)\\d?");
@@ -45,9 +45,9 @@ public class Recogniser {
 			result = "salt";
 		} else if ((isOxide == false) && (isAcid == false) && (isBase == false) && (isSalt == false) && (isSimple == true)) {
 			result = "simple";
-		} else if ((isOxide == false) && (isAcid == false) && (isBase == false) && (isSalt == false) && (isSimple == false)) {
+		} else if ((isOxide == false) && (isAcid == false) && (isBase == false) && (isSalt == false) && (isSimple == false) && (isWater == false)) {
 			result = "NaS";
-		} else if ((isOxide == false) && (isAcid == false) && (isBase == false) && (isSalt == false) && (isSimple == false) && (isWater == true)) {
+		} else if ((isOxide == false) && (isAcid == false) && (isBase == false) && (isSalt == false) && (isWater == true)) { //второй костыль
 			result = "water";
 		} else {
 			result = "NaS";
