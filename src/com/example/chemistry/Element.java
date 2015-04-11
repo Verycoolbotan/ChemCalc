@@ -64,6 +64,10 @@ public enum Element {
 		return type;
 	}
 	
+	public Element getElement(String s){
+		return Element.valueOf(s);
+	}
+	
 	private Element(int num, double mass, int val, boolean isMetal, String type){
 		this.num = num;
 		this.mass = mass;

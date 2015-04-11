@@ -79,6 +79,8 @@ public class Substance {
 		return m.replaceAll(replace);
 	}
 
+	//=====================================================================================================
+	
 	public String getType(){
 		return this.type;
 	}
@@ -87,8 +89,8 @@ public class Substance {
 		return (v*c)/this.elemQ;
 	}
 	
-	public static int gcd(int a,int b) { //нагло скопированная реализация алгоритма Евклида (не хочу изобретать велосипед снова). 
-        while (b !=0) {					 //Это понадобится для расставления коэффициентов.
+	public static int gcd(int a,int b) { //нагло скопированная с Хабра реализация алгоритма Евклида (не хочу изобретать велосипед снова). 
+        while (b !=0) {					 //Это понадобится для расставления коэффициентов и индексов.
             int tmp = a%b;
             a = b;
             b = tmp;
@@ -111,7 +113,7 @@ public class Substance {
 	}
 	
 	@Override
-	public String toString(){  //Заглушка. Позже добавлю доп. условия и форматирование вывода.
+	public String toString(){  //Позже добавлю доп. условия и форматирование вывода.
 		String result;
 		result = this.elem.toString();
 		if(this.elemQ == 1){
@@ -126,6 +128,44 @@ public class Substance {
 		}
 		return result;
 	}
+	
+	static String divide(String input){
+		String output = "";
+		Pattern pattern = Pattern.compile("([A-Z](?>[a-z])?(?>\\d*)?)");
+		Matcher matcher = pattern.matcher(input);
+		while (matcher.find() == true) {
+			String temp = matcher.group();
+			if (Character.isDigit(temp.charAt(temp.length()-1))) {
+				int q = Integer.parseInt(temp.replaceAll("[A-Za-z]", ""));
+				for (int i = 0; i < q; i++) {
+					output += temp.replaceAll("\\d", "") + " ";
+				}
+			} else {
+				output += temp + " ";
+			}
+		}
+		return output;
+	}
+	
+	static String bakeResult(String a, String b){ //мсье знает толк в извращениях
+		String input = a + b;
+		input = divide(input);
+		String output = "";
+		String[] regex = new String[]{"[^H]", "[^C]", "[^P]", "[^N]", "(?!.*Si).*", "(?!.*Cl).*", "[^S]", "[^O]"};
+		String[] elem = new String[]{"H", "C", "P", "N", "Si", "Cl", "S", "O"};
+		String[] tmp;
+		
+		for(int i = 0; i < regex.length; i++){
+			tmp = input.replaceAll(regex[i], " ").trim().split(" ");
+			if(tmp.length >= 1 && tmp[0].isEmpty() == false){
+				output += (elem[i] + tmp.length).replaceAll("1", "");
+			}
+		}
+		Log.d(SUBSTANCE_TAG, "result" + output);
+		return output;
+	}
+	
+	//================================================================================================================
 	
 	public static String react(Substance a, Substance b){
 		Element eTMP;
@@ -171,7 +211,12 @@ public class Substance {
 			}
 		break;
 		case "oxideoxide":
-			s = (a.elem.isMetal() == true ? a : b);
+			if((a.elem.isMetal() == true ^ b.elem.isMetal() == true) && (a.elem.isMetal() == false ^ b.elem.isMetal() == false)){
+				s = a.elem.isMetal() == true ? a : b;
+				s.radical = Radical.valueOf(bakeResult(a.radical.toString(), b.toString()));
+				setIndexes(s);
+				result = s.toString();
+			}
 			
 		break;
 		}

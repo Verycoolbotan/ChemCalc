@@ -3,7 +3,11 @@ package com.example.chemistry;
 import java.util.regex.Pattern;
 import java.util.regex.Matcher;
 
+import android.util.Log;
+
 public class Recogniser {
+	
+	private static final String SUBSTANCE_TAG = "Recogniser";
 
 	private String result;
 	static boolean isSimple = false;
@@ -29,13 +33,19 @@ public class Recogniser {
 		Matcher mWater = water.matcher(input);
 
 		isSimple = mSimple.find();
+		Log.d(SUBSTANCE_TAG, "isSimple " + isSimple );
 		isOxide = mOxide.find();
+		Log.d(SUBSTANCE_TAG, "isOxide " + isOxide );
 		isBase = mBase.find();
+		Log.d(SUBSTANCE_TAG, "isBase " + isBase );
 		isAcid = mAcid.find();
+		Log.d(SUBSTANCE_TAG, "isAcid " + isAcid );
 		isSalt = mSalt.find();
+		Log.d(SUBSTANCE_TAG, "isSalt " + isSalt );
 		isWater = mWater.find();
+		Log.d(SUBSTANCE_TAG, "isWater " + isWater );
 
-		if ((isOxide == true) && (isAcid == false) && (isBase == false)&& (isSalt == false) && (isSimple == false)) {
+		if ((isOxide == true) && (isAcid == false) && (isBase == false) && (isSimple == false)) {
 			result = "oxide";
 		} else if ((isOxide == false) && (isAcid == true) && (isBase == false) && (isSalt == false) && (isSimple == false)) {
 			result = "acid";
