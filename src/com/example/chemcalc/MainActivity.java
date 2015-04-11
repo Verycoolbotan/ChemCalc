@@ -53,6 +53,8 @@ public class MainActivity extends Activity implements OnClickListener {
 			firstSubType = "";
 			secondSubType = "";
 			result.setText("");
+			firstSub.setText("");
+			secondSub.setText("");
 			break;
 		case R.id.about:
 			Intent intent = new Intent(MainActivity.this, AboutActivity.class);

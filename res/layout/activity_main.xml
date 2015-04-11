@@ -34,7 +34,9 @@
         android:layout_alignLeft="@+id/hint"
         android:layout_below="@+id/hint"
         android:layout_toLeftOf="@+id/plus"
-        android:ems="10" >
+        android:ems="10"
+        android:lines="@integer/line_count"
+        android:maxLines="@integer/line_count" >
 
         <requestFocus />
     </EditText>
@@ -46,7 +48,9 @@
         android:layout_alignParentRight="true"
         android:layout_alignTop="@+id/plus"
         android:layout_toRightOf="@+id/plus"
-        android:ems="10" />
+        android:ems="10"
+        android:lines="@integer/line_count"
+        android:maxLines="@integer/line_count" />
 
     <TextView
         android:id="@+id/equals"
@@ -81,8 +85,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/enter"
+        android:layout_alignRight="@+id/first_substance"
         android:layout_below="@+id/enter"
-        android:layout_toLeftOf="@+id/equalize"
         android:text="@string/clear"
         android:textSize="@dimen/regular_text_size" />
 
@@ -101,18 +105,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_above="@+id/imageView1"
-        android:layout_alignParentRight="true"
-        android:layout_toRightOf="@+id/equalize"
+        android:layout_alignLeft="@+id/second_substance"
+        android:layout_alignRight="@+id/imageView1"
         android:text="@string/about"
-        android:textSize="@dimen/regular_text_size" />
-
-    <Button
-        android:id="@+id/equalize"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/imageView1"
-        android:layout_centerHorizontal="true"
-        android:text="@string/equalize"
         android:textSize="@dimen/regular_text_size" />
 
 </RelativeLayout>

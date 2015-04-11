@@ -155,12 +155,21 @@ public class Substance {
 		String[] elem = new String[]{"H", "C", "P", "N", "Si", "Cl", "S", "O"};
 		String[] tmp;
 		
+		
 		for(int i = 0; i < regex.length; i++){
 			tmp = input.replaceAll(regex[i], " ").trim().split(" ");
-			if(tmp.length >= 1 && tmp[0].isEmpty() == false){
+			for(int j = 0; i < tmp.length; j++){
+				tmp[j].trim();
+			}
+			if(tmp.length >= 1 && tmp[0].isEmpty() == false && tmp[tmp.length - 1].isEmpty() != true){
 				output += (elem[i] + tmp.length).replaceAll("1", "");
 			}
 		}
+		
+		if(output.equals("HO")){
+			output = "OH";
+		}
+		
 		Log.d(SUBSTANCE_TAG, "result" + output);
 		return output;
 	}
@@ -217,7 +226,42 @@ public class Substance {
 				setIndexes(s);
 				result = s.toString();
 			}
-			
+		break;
+		case "oxidewater":
+		case "wateroxide":
+			if(a.type.equals("water")){
+				s = a;
+				s.radical = Radical.valueOf(bakeResult("O", b.toString()));
+			} else {
+				s = b;
+				s.radical = Radical.valueOf(bakeResult("O", a.toString()));
+			}
+			setIndexes(s);
+			result = s.toString();
+		break;
+		case "oxideacid":
+		case "acidoxide":
+			if(a.type.equals("acid")){
+				b.radical = a.radical;
+				setIndexes(b);
+				result = b.toString() + " + H2O";
+			} else {
+				a.radical = b.radical;
+				setIndexes(a);
+				result = a.toString() + " + H2O";
+			}
+		break;
+		case "oxidebase":
+		case "baseoxide":
+			if(a.type.equals("base")){
+				s = a;
+				s.radical = Radical.valueOf(bakeResult("O", b.toString()));
+			} else {
+				s = b;
+				s.radical = Radical.valueOf(bakeResult("O", a.toString()));
+			}
+			setIndexes(s);
+			result =  s.toString() + " + H2O";
 		break;
 		}
 		return result;
