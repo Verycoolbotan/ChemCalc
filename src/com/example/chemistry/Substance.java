@@ -147,7 +147,7 @@ public class Substance {
 		return output;
 	}
 	
-	static String bakeResult(String a, String b){ //мсье знает толк в извращениях
+	static String bakeResult(String a, String b){
 		String input = a + b;
 		input = divide(input);
 		String output = "";
@@ -158,9 +158,9 @@ public class Substance {
 		
 		for(int i = 0; i < regex.length; i++){
 			tmp = input.replaceAll(regex[i], " ").trim().split(" ");
-			for(int j = 0; i < tmp.length; j++){
+			/*for(int j = 0; i < tmp.length; j++){
 				tmp[j].trim();
-			}
+			}*/
 			if(tmp.length >= 1 && tmp[0].isEmpty() == false && tmp[tmp.length - 1].isEmpty() != true){
 				output += (elem[i] + tmp.length).replaceAll("1", "");
 			}
@@ -231,10 +231,10 @@ public class Substance {
 		case "wateroxide":
 			if(a.type.equals("water")){
 				s = a;
-				s.radical = Radical.valueOf(bakeResult("O", b.toString()));
+				s.radical = Radical.valueOf(bakeResult(b.toString(), "O"));
 			} else {
 				s = b;
-				s.radical = Radical.valueOf(bakeResult("O", a.toString()));
+				s.radical = Radical.valueOf(bakeResult(a.toString(), "O"));
 			}
 			setIndexes(s);
 			result = s.toString();
@@ -255,10 +255,10 @@ public class Substance {
 		case "baseoxide":
 			if(a.type.equals("base")){
 				s = a;
-				s.radical = Radical.valueOf(bakeResult("O", b.toString()));
+				s.radical = Radical.valueOf(bakeResult(b.toString(), "O"));
 			} else {
 				s = b;
-				s.radical = Radical.valueOf(bakeResult("O", a.toString()));
+				s.radical = Radical.valueOf(bakeResult(a.toString(), "O"));
 			}
 			setIndexes(s);
 			result =  s.toString() + " + H2O";
