@@ -36,7 +36,8 @@
         android:layout_toLeftOf="@+id/plus"
         android:ems="10"
         android:lines="@integer/line_count"
-        android:maxLines="@integer/line_count" >
+        android:maxLines="@integer/line_count"
+        android:textSize="@dimen/regular_text_size" >
 
         <requestFocus />
     </EditText>
@@ -50,7 +51,8 @@
         android:layout_toRightOf="@+id/plus"
         android:ems="10"
         android:lines="@integer/line_count"
-        android:maxLines="@integer/line_count" />
+        android:maxLines="@integer/line_count"
+        android:textSize="@dimen/regular_text_size" />
 
     <TextView
         android:id="@+id/equals"
@@ -78,6 +80,7 @@
         android:layout_alignParentRight="true"
         android:layout_below="@+id/equals"
         android:text="@string/enter"
+        android:textColorLink="@android:color/holo_orange_light"
         android:textSize="@dimen/regular_text_size" />
 
     <Button
@@ -88,6 +91,7 @@
         android:layout_alignRight="@+id/first_substance"
         android:layout_below="@+id/enter"
         android:text="@string/clear"
+        android:textColorLink="@android:color/holo_orange_light"
         android:textSize="@dimen/regular_text_size" />
 
     <ImageView
@@ -108,6 +112,7 @@
         android:layout_alignLeft="@+id/second_substance"
         android:layout_alignRight="@+id/imageView1"
         android:text="@string/about"
+        android:textColorLink="@android:color/holo_orange_light"
         android:textSize="@dimen/regular_text_size" />
 
 </RelativeLayout>

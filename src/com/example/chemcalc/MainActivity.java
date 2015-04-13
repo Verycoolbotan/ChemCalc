@@ -42,7 +42,9 @@ public class MainActivity extends Activity implements OnClickListener {
 			secondSubType = rec.recognise((String) secondSub.getText().toString());
 			Substance secondSubstance = new Substance(secondSubType, (secondSub.getText().toString()));
 			try {
-				result.setText((CharSequence) (Substance.react(firstSubstance, secondSubstance)));
+				result.setText((CharSequence) replaceIndexes(Substance.react(firstSubstance, secondSubstance)));
+				firstSub.setText((CharSequence) replaceIndexes(firstSub.getText().toString()));
+				secondSub.setText(((CharSequence) replaceIndexes(secondSub.getText().toString())));
 			} catch (Exception e) {
 				Toast.makeText(this, e.getMessage(), Toast.LENGTH_LONG).show();
 			}
@@ -61,6 +63,14 @@ public class MainActivity extends Activity implements OnClickListener {
 			startActivity(intent);
 			break;
 		}
-
+	}
+	
+	public static String replaceIndexes(String input){
+		String[] indexes = new String[]{"₀","₁","₂", "₃", "₄", "₅", "₆", "₇", "₈", "₉"};
+		for(int i = 2; i <= 9; i++){
+			String tmp = "" + i;
+			input = input.replaceAll(tmp, indexes[i]);
+		}
+		return input;
 	}
 }

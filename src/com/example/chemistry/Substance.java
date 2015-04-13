@@ -192,6 +192,15 @@ public class Substance {
 			setIndexes(b);
 			result = a.toString() + " + " + b.toString();
 		break;
+		case "saltbase":
+		case "basesalt":
+			rTMP = b.radical;
+			b.radical = a.radical;
+			a.radical = rTMP;
+			setIndexes(a);
+			setIndexes(b);
+			result = a.toString() + " + " + b.toString();
+		break;
 		case "baseacid":
 		case "acidbase":
 			if(a.type.equals("base")){
