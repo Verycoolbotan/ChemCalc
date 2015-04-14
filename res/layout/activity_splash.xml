@@ -2,18 +2,18 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="#eeeeee" >
+    android:background="#DCEDC8">
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center_vertical|center_horizontal"
         android:text="@string/please_wait"
-        android:textSize="@dimen/large_text_size" />
+        android:textSize="@dimen/very_large_text_size" />
     
     <ImageView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:layout_gravity="center_horizontal"
         android:scaleType="centerInside"
         android:src="@drawable/bottom" />

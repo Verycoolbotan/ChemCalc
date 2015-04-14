@@ -3,6 +3,8 @@ package com.example.chemcalc;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.View;
 import android.widget.Button;
 import android.view.View.OnClickListener;
@@ -37,10 +39,10 @@ public class MainActivity extends Activity implements OnClickListener {
 		switch (v.getId()) {
 		case R.id.enter:
 			Recogniser rec = new Recogniser();
-			firstSubType = rec.recognise((String) firstSub.getText().toString());
-			Substance firstSubstance = new Substance(firstSubType, (firstSub.getText().toString()));
-			secondSubType = rec.recognise((String) secondSub.getText().toString());
-			Substance secondSubstance = new Substance(secondSubType, (secondSub.getText().toString()));
+			firstSubType = rec.recognise((String) undoReplacing(firstSub.getText().toString()));
+			Substance firstSubstance = new Substance(firstSubType, undoReplacing(firstSub.getText().toString()));
+			secondSubType = rec.recognise((String) undoReplacing(secondSub.getText().toString()));
+			Substance secondSubstance = new Substance(secondSubType, undoReplacing(secondSub.getText().toString()));
 			try {
 				result.setText((CharSequence) replaceIndexes(Substance.react(firstSubstance, secondSubstance)));
 				firstSub.setText((CharSequence) replaceIndexes(firstSub.getText().toString()));
@@ -59,9 +61,7 @@ public class MainActivity extends Activity implements OnClickListener {
 			secondSub.setText("");
 			break;
 		case R.id.about:
-			Intent intent = new Intent(MainActivity.this, AboutActivity.class);
-			startActivity(intent);
-			break;
+			startActivity(new Intent(MainActivity.this, AboutActivity.class));
 		}
 	}
 	
@@ -70,6 +70,15 @@ public class MainActivity extends Activity implements OnClickListener {
 		for(int i = 2; i <= 9; i++){
 			String tmp = "" + i;
 			input = input.replaceAll(tmp, indexes[i]);
+		}
+		return input;
+	}
+	
+	public static String undoReplacing(String input){
+		String[] indexes = new String[]{"₀","₁","₂", "₃", "₄", "₅", "₆", "₇", "₈", "₉"};
+		for(int i = 2; i <= 9; i++){
+			String tmp = "" + i;
+			input = input.replaceAll(indexes[i], tmp);
 		}
 		return input;
 	}

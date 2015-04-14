@@ -2,7 +2,8 @@
 <resources>
 
     <string name="app_name">ChemCalc</string>
-    <string name="title_activity_main">ChemCalc</string>
+    <string name="action_settings">Settings</string>
+    <string name="title_activity_main">Химический калькулятор</string>
     <string name="please_wait">Пожалуйста, подождите</string>
     <string name="user_type">Введите уравнение в поле ниже:</string>
     <string name="plus">+</string>
@@ -10,8 +11,7 @@
     <string name="enter">Рассчитать</string>
     <string name="clear">Очистить всё</string>
     <string name="about">Справка</string>
-    <string name="equalize">Выровнять</string>
-    <string name="result">Результат реакции</string>
+    <string name="result">Результат</string>
     <string name="help">
         <![CDATA[
         <b>О приложении</b><br>
