@@ -32,8 +32,8 @@ public final class R {
         public static final int equals=0x7f080005;
         public static final int first_substance=0x7f080003;
         public static final int hint=0x7f080001;
-        public static final int imageView1=0x7f080007;
         public static final int info=0x7f080000;
+        public static final int pic=0x7f080007;
         public static final int plus=0x7f080002;
         public static final int result=0x7f080006;
         public static final int second_substance=0x7f080004;
