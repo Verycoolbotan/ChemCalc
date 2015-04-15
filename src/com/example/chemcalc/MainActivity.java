@@ -48,9 +48,9 @@ public class MainActivity extends Activity implements OnClickListener {
 				firstSub.setText((CharSequence) replaceIndexes(firstSub.getText().toString()));
 				secondSub.setText(((CharSequence) replaceIndexes(secondSub.getText().toString())));
 			} catch (Exception e) {
-				Toast.makeText(this, e.getMessage(), Toast.LENGTH_LONG).show();
+				Toast.makeText(this, "Я так не умею", Toast.LENGTH_LONG).show();
 			}
-			Toast.makeText(this, firstSubstance.getType() + " + " + secondSubstance.getType(), Toast.LENGTH_LONG).show();
+			//Toast.makeText(this, firstSubstance.getType() + " + " + secondSubstance.getType(), Toast.LENGTH_LONG).show();
 
 			break;
 		case R.id.clear:
