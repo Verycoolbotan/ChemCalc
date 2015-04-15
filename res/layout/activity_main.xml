@@ -76,9 +76,8 @@
         android:id="@+id/pic"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentRight="true"
         android:layout_below="@+id/clear"
+        android:layout_centerHorizontal="true"
         android:scaleType="centerInside"
         android:src="@drawable/bottom" />
 
@@ -94,16 +93,6 @@
         android:textSize="@dimen/very_large_text_size" />
 
     <Button
-        android:id="@+id/about"
-        style="@style/MyButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignRight="@+id/second_substance"
-        android:layout_alignTop="@+id/hint"
-        android:drawableLeft="@drawable/about"
-        android:text="@string/about" />
-
-    <Button
         android:id="@+id/clear"
         style="@style/MyButton"
         android:layout_width="wrap_content"
@@ -113,5 +102,15 @@
         android:layout_below="@+id/result"
         android:text="@string/clear"
         android:textSize="@dimen/very_large_text_size" />
+
+    <Button
+        android:id="@+id/about"
+        style="@style/MyButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignRight="@+id/clear"
+        android:drawableLeft="@drawable/about"
+        android:text="@string/about" />
 
 </RelativeLayout>

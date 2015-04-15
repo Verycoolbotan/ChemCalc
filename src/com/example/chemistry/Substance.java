@@ -240,10 +240,10 @@ public class Substance {
 		case "wateroxide":
 			if(a.type.equals("water")){
 				s = a;
-				s.radical = Radical.valueOf(bakeResult(b.toString(), "O"));
+				s.radical = Radical.valueOf(bakeResult("O", b.toString()));
 			} else {
 				s = b;
-				s.radical = Radical.valueOf(bakeResult(a.toString(), "O"));
+				s.radical = Radical.valueOf(bakeResult("O", a.toString()));
 			}
 			setIndexes(s);
 			result = s.toString();
