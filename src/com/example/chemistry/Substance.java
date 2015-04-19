@@ -4,6 +4,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import android.util.Log;
+import android.widget.Toast;
 
 public class Substance {
 	private static final String SUBSTANCE_TAG = "Substance";
@@ -19,17 +20,17 @@ public class Substance {
 		Log.d(SUBSTANCE_TAG, input);
 		Log.d(SUBSTANCE_TAG, "Type: " + type);
 		switch(type){
-		case "NaS":		//Не вещество. Создаём объект с null-значениями везде.
+		case "NaS":		//РќРµ РІРµС‰РµСЃС‚РІРѕ. РЎРѕР·РґР°С‘Рј РѕР±СЉРµРєС‚ СЃ null-Р·РЅР°С‡РµРЅРёСЏРјРё РІРµР·РґРµ.
 			this.elem = null;  
 			this.radical = null;
 			break;
 		case "simple":
-			if (Character.isDigit(input.charAt(input.length() - 1)) == true) { //Если на конце цифра, то это индекс при элементе.
-				this.elemQ = input.charAt(input.length() - 1) - '0';			   //Иначе индекс равен 1.
+			if (Character.isDigit(input.charAt(input.length() - 1)) == true) { //Р•СЃР»Рё РЅР° РєРѕРЅС†Рµ С†РёС„СЂР°, С‚Рѕ СЌС‚Рѕ РёРЅРґРµРєСЃ РїСЂРё СЌР»РµРјРµРЅС‚Рµ.
+				this.elemQ = input.charAt(input.length() - 1) - '0';			   //РРЅР°С‡Рµ РёРЅРґРµРєСЃ СЂР°РІРµРЅ 1.
 			} else {
 				this.elemQ = 1;
 			}
-			input = replaceMe(input, "", "\\d?"); //Когда лень возиться со StringBuffer/StringBuilder.
+			input = replaceMe(input, "", "\\d?"); 
 			input.trim();
 			this.elem = Element.valueOf(input);
 			break;
@@ -39,23 +40,23 @@ public class Substance {
 				this.elemQ = 2;
 				this.radQ = 1;
 				break;
-		default:   //Оксиды, кислоты и соли
+		default:   //РћРєСЃРёРґС‹, РєРёСЃР»РѕС‚С‹ Рё СЃРѕР»Рё
 			Log.d(SUBSTANCE_TAG, input);
 			int s = input.indexOf('(') + 1;
 			Log.d(SUBSTANCE_TAG, "Start index: " + s);
 			int e = input.indexOf(')');
 			Log.d(SUBSTANCE_TAG, "End index: " + e);
 			try{
-				this.radical = Radical.valueOf(input.substring(s, e));//Извлечение радикала из скобок
+				this.radical = Radical.valueOf(input.substring(s, e));//РР·РІР»РµС‡РµРЅРёРµ СЂР°РґРёРєР°Р»Р° РёР· СЃРєРѕР±РѕРє
 			} catch(Exception exc){
 				Log.d(SUBSTANCE_TAG, exc.getMessage());
 			}
-			if (Character.isDigit(input.charAt(input.length() - 1)) == true) { //Если на конце цифра, то это индекс при радикале.
-				this.radQ = input.charAt(input.length() - 1) - '0';			   //Иначе индекс равен 1.
+			if (Character.isDigit(input.charAt(input.length() - 1)) == true) { //Р•СЃР»Рё РЅР° РєРѕРЅС†Рµ С†РёС„СЂР°, С‚Рѕ СЌС‚Рѕ РёРЅРґРµРєСЃ РїСЂРё СЂР°РґРёРєР°Р»Рµ.
+				this.radQ = input.charAt(input.length() - 1) - '0';			   //РРЅР°С‡Рµ РёРЅРґРµРєСЃ СЂР°РІРµРЅ 1.
 			} else {
 				this.radQ = 1;
 			}
-			input = replaceMe(input, "", "\\(([A-Z][a-z]?\\d?){1,3}\\)\\d?");//Убираем радикал и смотрим на элемент
+			input = replaceMe(input, "", "\\(([A-Z][a-z]?\\d?){1,3}\\)\\d?");//РЈР±РёСЂР°РµРј СЂР°РґРёРєР°Р» Рё СЃРјРѕС‚СЂРёРј РЅР° СЌР»РµРјРµРЅС‚
 			input.trim();
 			Log.d(SUBSTANCE_TAG, "Replaced: " + input);
 			if (Character.isDigit(input.charAt(input.length() - 1)) == true) {
@@ -66,7 +67,7 @@ public class Substance {
 			input = replaceMe(input, "", "\\d?");
 			input.trim();
 			this.elem = Element.valueOf(input);
-			this.elem.setValency(calcValency(this.radical.getValency(), this.radQ)); //Ставим валентность элементу
+			this.elem.setValency(calcValency(this.radical.getValency(), this.radQ)); //РЎС‚Р°РІРёРј РІР°Р»РµРЅС‚РЅРѕСЃС‚СЊ СЌР»РµРјРµРЅС‚Сѓ
 			Log.d(SUBSTANCE_TAG, "Elem valency:" + this.elem.getValency());
 			Log.d(SUBSTANCE_TAG, "Rad valency:" + this.radical.getValency());
 			break;
@@ -89,8 +90,8 @@ public class Substance {
 		return (v*c)/this.elemQ;
 	}
 	
-	public static int gcd(int a,int b) { //нагло скопированная с Хабра реализация алгоритма Евклида (не хочу изобретать велосипед снова). 
-        while (b !=0) {					 //Это понадобится для расставления коэффициентов и индексов.
+	public static int gcd(int a,int b) { 
+        while (b !=0) {					 
             int tmp = a%b;
             a = b;
             b = tmp;
@@ -108,16 +109,16 @@ public class Substance {
 		a.radQ = aLCM/a.radical.getValency();
 	}
 	
-	public void setCoeff(int c){ //Эта фича понадобится для выравнивания реакций. Пока что это самые бесполезные строки в проекте.
+	public void setCoeff(int c){ 
 		this.coeff = c;
 	}
 	
 	@Override
-	public String toString(){  //Позже добавлю доп. условия и форматирование вывода.
+	public String toString(){  
 		String result;
 		result = this.elem.toString();
 		if(this.elemQ == 1){
-			//ничего не делаем
+			//РЅРёС‡РµРіРѕ РЅРµ РґРµР»Р°РµРј
 		} else {
 			result += this.elemQ;
 		}
@@ -224,7 +225,7 @@ public class Substance {
 			case "Ca":
 				s.radical = Radical.OH;
 				setIndexes(s);
-				result = s.toString();
+				result = s.toString() + " + H2в†‘";
 			break;
 			}
 		break;
@@ -272,7 +273,11 @@ public class Substance {
 			setIndexes(s);
 			result =  s.toString() + " + H2O";
 		break;
+		default:
+			result = "РЇ С‚Р°Рє РЅРµ СѓРјРµСЋ";
+		break;
 		}
+		
 		return result;
 		
 	}
