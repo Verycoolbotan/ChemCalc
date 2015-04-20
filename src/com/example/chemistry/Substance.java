@@ -1,4 +1,4 @@
-package com.example.chemistry;
+﻿package com.example.chemistry;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -90,11 +90,7 @@ public class Substance {
 		return (v*c)/this.elemQ;
 	}
 	
-<<<<<<< HEAD
-	public static int gcd(int a,int b) { 
-=======
 	public static int gcd(int a,int b) { //Расставляем коэффициенты
->>>>>>> 1bb8d7f8615e854e249da74ac7889fc5cf97e895
         while (b !=0) {					 
             int tmp = a%b;
             a = b;
@@ -113,11 +109,8 @@ public class Substance {
 		a.radQ = aLCM/a.radical.getValency();
 	}
 	
-<<<<<<< HEAD
-	public void setCoeff(int c){ 
-=======
+
 	public void setCoeff(int c){ //Это понадобится для выравнивания реакций. Пока что это самые бесполезные строки в проекте.
->>>>>>> 1bb8d7f8615e854e249da74ac7889fc5cf97e895
 		this.coeff = c;
 	}
 	
@@ -277,6 +270,19 @@ public class Substance {
 			}
 			setIndexes(s);
 			result =  s.toString() + " + H2O";
+		break;
+		case "simpleacid":
+		case "acidsimple":
+			s = null;
+			if(a.elem.isMetal() == true){
+				b.elem = a.elem;
+				s = b;
+			} else if(b.elem.isMetal() == true){
+				a.elem = b.elem;
+				s = a;
+			}
+			setIndexes(s);
+			result = s.toString() + " + H2↑";
 		break;
 		default:
 			result = "Я так не умею";
