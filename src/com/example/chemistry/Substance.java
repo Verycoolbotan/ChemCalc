@@ -90,7 +90,11 @@ public class Substance {
 		return (v*c)/this.elemQ;
 	}
 	
+<<<<<<< HEAD
 	public static int gcd(int a,int b) { 
+=======
+	public static int gcd(int a,int b) { //Расставляем коэффициенты
+>>>>>>> 1bb8d7f8615e854e249da74ac7889fc5cf97e895
         while (b !=0) {					 
             int tmp = a%b;
             a = b;
@@ -109,7 +113,11 @@ public class Substance {
 		a.radQ = aLCM/a.radical.getValency();
 	}
 	
+<<<<<<< HEAD
 	public void setCoeff(int c){ 
+=======
+	public void setCoeff(int c){ //Это понадобится для выравнивания реакций. Пока что это самые бесполезные строки в проекте.
+>>>>>>> 1bb8d7f8615e854e249da74ac7889fc5cf97e895
 		this.coeff = c;
 	}
 	
@@ -159,9 +167,6 @@ public class Substance {
 		
 		for(int i = 0; i < regex.length; i++){
 			tmp = input.replaceAll(regex[i], " ").trim().split(" ");
-			/*for(int j = 0; i < tmp.length; j++){
-				tmp[j].trim();
-			}*/
 			if(tmp.length >= 1 && tmp[0].isEmpty() == false && tmp[tmp.length - 1].isEmpty() != true){
 				output += (elem[i] + tmp.length).replaceAll("1", "");
 			}
@@ -241,10 +246,10 @@ public class Substance {
 		case "wateroxide":
 			if(a.type.equals("water")){
 				s = a;
-				s.radical = Radical.valueOf(bakeResult(b.toString(), "O"));
+				s.radical = Radical.valueOf(bakeResult("O", b.toString()));
 			} else {
 				s = b;
-				s.radical = Radical.valueOf(bakeResult(a.toString(), "O"));
+				s.radical = Radical.valueOf(bakeResult("O", a.toString()));
 			}
 			setIndexes(s);
 			result = s.toString();
