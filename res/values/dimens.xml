@@ -3,8 +3,13 @@
     
    <dimen name="side_margin">16dp</dimen>
    <dimen name="padding">8dp</dimen>
-   <dimen name="large_text_size">32sp</dimen>
-   <dimen name="regular_text_size">28sp</dimen>
-   <dimen name="very_large_text_size">48sp</dimen>
-    
+   <dimen name="large_text_size">24sp</dimen>
+   <dimen name="regular_text_size">20sp</dimen>
+   <dimen name="very_large_text_size">40sp</dimen>
+   <dimen name="large_text_size_low_density">20sp</dimen>
+   <dimen name="regular_text_size_low_density">15sp</dimen>
+   <dimen name="very_large_text_size_low_density">22sp</dimen>
+   <dimen name="large_text_size_mid_density">25sp</dimen>
+   <dimen name="regular_text_size_mid_density">20sp</dimen>
+   <dimen name="very_large_text_size_mid_density">30sp</dimen>
 </resources>

@@ -12,10 +12,16 @@ public final class R {
     }
     public static final class dimen {
         public static final int large_text_size=0x7f040002;
+        public static final int large_text_size_low_density=0x7f040005;
+        public static final int large_text_size_mid_density=0x7f040008;
         public static final int padding=0x7f040001;
         public static final int regular_text_size=0x7f040003;
+        public static final int regular_text_size_low_density=0x7f040006;
+        public static final int regular_text_size_mid_density=0x7f040009;
         public static final int side_margin=0x7f040000;
         public static final int very_large_text_size=0x7f040004;
+        public static final int very_large_text_size_low_density=0x7f040007;
+        public static final int very_large_text_size_mid_density=0x7f04000a;
     }
     public static final class drawable {
         public static final int about=0x7f020000;
@@ -26,17 +32,18 @@ public final class R {
         public static final int ic_launcher=0x7f020005;
     }
     public static final class id {
-        public static final int about=0x7f08000a;
-        public static final int clear=0x7f080008;
-        public static final int enter=0x7f080009;
-        public static final int equals=0x7f080005;
-        public static final int first_substance=0x7f080003;
-        public static final int hint=0x7f080001;
-        public static final int info=0x7f080000;
-        public static final int pic=0x7f080007;
-        public static final int plus=0x7f080002;
-        public static final int result=0x7f080006;
-        public static final int second_substance=0x7f080004;
+        public static final int about=0x7f08000b;
+        public static final int clear=0x7f080009;
+        public static final int enter=0x7f08000a;
+        public static final int equals=0x7f080006;
+        public static final int first_substance=0x7f080004;
+        public static final int hint=0x7f080002;
+        public static final int info=0x7f080001;
+        public static final int pic=0x7f080008;
+        public static final int plus=0x7f080003;
+        public static final int result=0x7f080007;
+        public static final int scrollView1=0x7f080000;
+        public static final int second_substance=0x7f080005;
     }
     public static final class integer {
         public static final int line_count=0x7f050000;

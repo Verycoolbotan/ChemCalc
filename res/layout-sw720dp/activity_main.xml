@@ -1,0 +1,118 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="#DCEDC8"
+    android:paddingBottom="@dimen/padding"
+    android:paddingLeft="@dimen/side_margin"
+    android:paddingRight="@dimen/side_margin"
+    android:paddingStart="@dimen/side_margin"
+    android:paddingTop="@dimen/padding" >
+
+    <TextView
+        android:id="@+id/hint"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:text="@string/user_type"
+        android:textSize="@dimen/very_large_text_size" />
+
+    <TextView
+        android:id="@+id/plus"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/hint"
+        android:layout_centerHorizontal="true"
+        android:text="@string/plus"
+        android:textSize="@dimen/very_large_text_size" />
+
+    <EditText
+        android:id="@+id/first_substance"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/hint"
+        android:layout_below="@+id/hint"
+        android:layout_toLeftOf="@+id/plus"
+        android:ems="10"
+        android:lines="@integer/line_count"
+        android:maxLines="@integer/line_count"
+        android:textSize="@dimen/very_large_text_size" >
+
+        <requestFocus />
+    </EditText>
+
+    <EditText
+        android:id="@+id/second_substance"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_alignTop="@+id/plus"
+        android:layout_toRightOf="@+id/plus"
+        android:ems="10"
+        android:lines="@integer/line_count"
+        android:maxLines="@integer/line_count"
+        android:textSize="@dimen/very_large_text_size" />
+
+    <TextView
+        android:id="@+id/equals"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/first_substance"
+        android:layout_below="@+id/first_substance"
+        android:text="@string/equals"
+        android:textSize="@dimen/very_large_text_size" />
+
+    <TextView
+        android:id="@+id/result"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/equals"
+        android:layout_toRightOf="@+id/equals"
+        android:text="@string/result"
+        android:textSize="@dimen/very_large_text_size" />
+
+    <ImageView
+        android:id="@+id/pic"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/about"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/clear"
+        android:scaleType="centerInside"
+        android:src="@drawable/bottom" />
+
+    <Button
+        android:id="@+id/enter"
+        style="@style/MyButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/equals"
+        android:layout_alignRight="@+id/first_substance"
+        android:layout_below="@+id/result"
+        android:text="@string/enter"
+        android:textSize="@dimen/very_large_text_size" />
+
+    <Button
+        android:id="@+id/clear"
+        style="@style/MyButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/second_substance"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/result"
+        android:text="@string/clear"
+        android:textSize="@dimen/very_large_text_size" />
+
+    <Button
+        android:id="@+id/about"
+        style="@style/MyButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignRight="@+id/clear"
+        android:drawableLeft="@drawable/about"
+        android:text="@string/about" />
+
+</RelativeLayout>

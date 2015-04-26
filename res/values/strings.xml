@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name">ChemCalc</string>
+    <string name="app_name">Химический калькулятор</string>
     <string name="action_settings">Settings</string>
     <string name="title_activity_main">Химический калькулятор</string>
     <string name="please_wait">Пожалуйста, подождите</string>
@@ -25,8 +25,11 @@
 	<b>Синтаксис</b><br>
 		Все вещества записываются в формате: элемент + индекс + (радикал/второй элемент) + индекс, например <b>Na(OH)</b>, <b>Ca(SO<SUB>4</SUB>)</b>, <b>Mg(Cl)<SUB>2</SUB></b>. 
 		Если индекс равен 1, то он опускается. После нажатия кнопки "Рассчитать" все лишние скобки будут убраны, текст получит форматирование.<br>
+	<b>Программа сообщает об ошибке, что делать?</b><br>
+		Допущена синтаксическая ошибка. Если Вы уверены, что всё сделано правильно, то обязательно сообщите разработчику.<br>
 	<b>О программе</b><br>
-		Химический калькулятор v1.0b]]>
+		Химический калькулятор v1.1<br>
+		E-mail для обратной связи: verycoolbotan16@gmail.com]]>
         </string>
     <string name="title_activity_about">Справка</string>
     <string name="hello_world">Hello world!</string>
